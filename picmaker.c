@@ -15,7 +15,7 @@ int main(){
 
   for(int i = 0; i < 500; i++){
     for(int j = 0; j < 500; j++){
-      sprintf(pix, "%d %d %d ", i / 2, 255, j / 2);
+      sprintf(pix, "%d %d %d ", 255, i / 2, j / 2);
 		  write(fd, pix, strlen(pix));
     }
   }
