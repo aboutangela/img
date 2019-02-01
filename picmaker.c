@@ -7,7 +7,7 @@
 int main(){
   int fd;
   char line[20];
-  char pix[3];
+  char pix[20];
 
   fd = open("img.ppm", O_CREAT | O_TRUNC | O_WRONLY, 666);
   snprintf(line, sizeof(line), "P3 500 500 255\n");
@@ -15,14 +15,11 @@ int main(){
 
   for(int i = 0; i < 500; i++){
     for(int j = 0; j < 500; j++){
-      pix[0] = i % 100;
-      pix[1] = j % 100;
-      pix[2] = 100;
-      snprintf(line, sizeof(line), "%d %d %d ", pix[0], pix[1], pix[2]);
-      write(fd, line, strlen(line));
+      sprintf(pix, "%d %d %d ", i / 2, 255, j / 2);
+		  write(fd, pix, strlen(pix));
     }
   }
-  
+
   close(fd);
   return 0;
 }
